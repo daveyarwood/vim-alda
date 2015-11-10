@@ -12,6 +12,8 @@ A plugin for Vim providing support for editing and playing [Alda](http://github.
 ### TODO
 
 * An operator for playing snippets of Alda code.
+* Smart indentation.
+* Autocompletion of stock instruments, alda.lisp vars.
 
 ## Installation
 
