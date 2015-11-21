@@ -1,6 +1,6 @@
 *alda.txt*	A Vim plugin for editing and playing Alda scores.
 
-INTRODUCTION						*alda-introduction*
+INTRODUCTION			               		*ft-alda* *alda*
 
 Alda is a music programming language designed for musicians who don't
 necessarily know how to program, as well as programmers who don't necessarily
@@ -44,10 +44,21 @@ the colon, e.g.:
 
 FOLDING						*ft-alda-folding* *alda-folding*
 
-(not yet implemented)
+Alda instrument parts, voices, etc. are foldable using the standard Vim
+|fold-commands|. This relies on indentation, so it is recommended that you
+follow the convention of indenting "blocks" of Alda code such as instrument
+parts and voices, e.g.:
 
-Alda instrument parts and voices are foldable using the standard Vim
-|fold-commands|.
+>
+	piano:
+	  V1:
+	    c8 d e f g a b > c
+
+	  V2:
+	    e8 f g a b > c d e
+
+	violin:
+	  c4. e8~4 g4
 
 ABOUT								*alda-about*
 

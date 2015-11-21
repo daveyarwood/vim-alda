@@ -8,6 +8,7 @@ A plugin for Vim providing support for editing and playing [Alda](http://github.
 
 * Syntax highlighting and filetype detection.
 * Score navigation via `[[`, `]]`, `[]`, `][`.
+* Folds for instrument parts, voices, etc.
 * Support for [vim-commentary](http://github.com/tpope/vim-commentary).
 
 ### TODO
@@ -21,6 +22,8 @@ A plugin for Vim providing support for editing and playing [Alda](http://github.
 Install using your Vim plugin manager of choice. [Vundle](https://github.com/VundleVim/Vundle.vim) and [Pathogen](http://github.com/tpope/vim-pathogen) are nice choices.
 
 ## Usage
+
+> For comprehensive documentation, see `:help alda`.
 
 TODO
 
