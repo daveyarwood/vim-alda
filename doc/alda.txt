@@ -1,0 +1,62 @@
+*alda.txt*	A Vim plugin for editing and playing Alda scores.
+
+INTRODUCTION						*alda-introduction*
+
+Alda is a music programming language designed for musicians who don't
+necessarily know how to program, as well as programmers who don't necessarily
+know how to music.
+
+For more information on Alda itself:
+
+	http://github.com/alda-lang/alda
+
+This plugin provides a nice environment for Vim users to work on Alda scores.
+
+INDENTATION					*ft-alda-indent* *alda-indent*
+
+(not yet implemented)
+
+SYNTAX HIGHLIGHTING				*ft-alda-syntax* *alda-syntax*
+
+Syntax highlighting is provided.
+
+NAVIGATION					*ft-alda-sections* *alda-sections*
+					    *ft-alda-navigation* *alda-navigation*
+
+Special behavior for Vim |object-motions| is provided.
+
+|[[| and |]]| navigate to the previous/next top-level thing, which could be an
+instrument part, Clojure expression, variable definition, or comment block.
+
+(A "top-level thing" here is any block of text starting with a non-whitespace
+character, either at the top of the file or following an empty line.)
+
+|[]| and |][| navigate between instrument parts, specifically. For this to
+work properly, you must follow the convention of starting each instrument part
+at the beginning of a line (no leading whitespace), and break the line after
+the colon, e.g.:
+>
+	piano:
+	  c d e f g
+
+	clarinet:
+	  e f g a b
+
+FOLDING						*ft-alda-folding* *alda-folding*
+
+(not yet implemented)
+
+Alda instrument parts and voices are foldable using the standard Vim
+|fold-commands|.
+
+ABOUT								*alda-about*
+
+Please feel free to file any issues or contribute patches via GitHub:
+
+	http://github.com/daveyarwood/vim-alda
+
+This plugin is distributed under the Vim license. See |license|.
+
+Copyright © 2015 Dave Yarwood <dave.yarwood@gmail.com>
+
+vim:tw=78:noet:sw=8:sts=8:ts=8:ft=help:norl:

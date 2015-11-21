@@ -7,6 +7,7 @@ A plugin for Vim providing support for editing and playing [Alda](http://github.
 ## Features
 
 * Syntax highlighting and filetype detection.
+* Score navigation via `[[`, `]]`, `[]`, `][`.
 * Support for [vim-commentary](http://github.com/tpope/vim-commentary).
 
 ### TODO
