@@ -60,7 +60,28 @@ parts and voices, e.g.:
 	violin:
 	  c4. e8~4 g4
 
-ABOUT								*alda-about*
+PARSING A SCORE					*ft-alda-parse* *alda-parse*
+
+There are commands available to parse the current Alda score file and show the
+parsed representation of the score.
+
+Note: You must save your score if you want your changes to be included in the
+score to be parsed.
+
+The parse results will be displayed in a vertical split with Clojure syntax
+highlighting. `q` is mapped in this buffer as a convenient way to close it.
+
+`:AldaParseFileIntoLispCode` displays the Clojure (alda.lisp) code that is
+generated when the score is parsed. This is mapped to <localleader>l.
+
+`:AldaParseFileIntoScoreMap` displays the map of score data that is produced
+when the alda.lisp code is evaluated. This is mapped to <localleader>m.
+
+PLAYING A SCORE					*ft-alda-play* *alda-play*
+
+(not yet implemented)
+
+ABOUT						*ft-alda-about* *alda-about*
 
 Please feel free to file any issues or contribute patches via GitHub:
 

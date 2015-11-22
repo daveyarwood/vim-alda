@@ -7,6 +7,7 @@ A plugin for Vim providing support for editing and playing [Alda](http://github.
 ## Features
 
 * Syntax highlighting and filetype detection.
+* Commands/mappings for parsing the current score and showing the results.
 * Score navigation via `[[`, `]]`, `[]`, `][`.
 * Folds for instrument parts, voices, etc.
 * Support for [vim-commentary](http://github.com/tpope/vim-commentary).
