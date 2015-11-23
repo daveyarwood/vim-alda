@@ -2,24 +2,31 @@ if !exists("g:alda_command")
   let g:alda_command = "alda"
 endif
 
-function! s:OpenClosableClojureSplitBuffer(txt)
+function! s:OpenClosableClojureSplitBuffer(cmd)
   vsplit __alda_buffer__
-  normal! ggdG
-
-  setlocal filetype=clojure
   setlocal buftype=nofile
-
   " enable 'q' = close buffer
   nnoremap <buffer> q :bd<CR>
 
-  call append(0, split(a:txt, '\v\n'))
+  normal! ggdG
+  call append(0, ["Parsing score. Please wait..."])
+  redraw
+
+  let result = system(a:cmd)
+
+  if v:shell_error == 0
+    setlocal filetype=clojure
+  endif
+
+  normal! ggdG
+  call append(0, split(result, '\v\n'))
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! AldaParseFileIntoLispCode()
-  let alda_lisp_code = system(g:alda_command . " parse --lisp --file " . bufname("%"))
-  call <SID>OpenClosableClojureSplitBuffer(alda_lisp_code)
+  let cmd = g:alda_command . " parse --lisp --file " . bufname("%")
+  call <SID>OpenClosableClojureSplitBuffer(cmd)
 endfunction
 
 command! AldaParseFileIntoLispCode call AldaParseFileIntoLispCode()
@@ -28,8 +35,8 @@ nnoremap <buffer> <localleader>l :call AldaParseFileIntoLispCode()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! AldaParseFileIntoScoreMap()
-  let alda_score_map = system(g:alda_command . " parse --map --file " . bufname("%"))
-  call <SID>OpenClosableClojureSplitBuffer(alda_score_map)
+  let cmd = g:alda_command . " parse --map --file " . bufname("%")
+  call <SID>OpenClosableClojureSplitBuffer(cmd)
 endfunction
 
 command! AldaParseFileIntoScoreMap call AldaParseFileIntoScoreMap()
