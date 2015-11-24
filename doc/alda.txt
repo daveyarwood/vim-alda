@@ -12,6 +12,13 @@ For more information on Alda itself:
 
 This plugin provides a nice environment for Vim users to work on Alda scores.
 
+OPTIONS						*ft-alda-options* *alda-options*
+
+g:alda_command					*g:alda_command* *alda_command*
+
+	The path to the `alda` executable.
+	default value: alda
+
 INDENTATION					*ft-alda-indent* *alda-indent*
 
 (not yet implemented)
@@ -77,9 +84,19 @@ generated when the score is parsed. This is mapped to <localleader>l.
 `:AldaParseFileIntoScoreMap` displays the map of score data that is produced
 when the alda.lisp code is evaluated. This is mapped to <localleader>m.
 
+This command relies on `alda` being installed and included in your $PATH. If 
+|g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda), it will use that executable instead.
+
 PLAYING A SCORE					*ft-alda-play* *alda-play*
 
-(not yet implemented)
+`:AldaPlayFile` will play the current score file. This is mapped to
+<localleader>P.
+
+Note: You must save your score if you want your changes to be included in the
+playback.
+
+This command relies on `alda` being installed and included in your $PATH. If
+|g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda), it will use that executable instead.
 
 ABOUT						*ft-alda-about* *alda-about*
 
