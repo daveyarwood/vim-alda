@@ -1,5 +1,15 @@
 *alda.txt*	A Vim plugin for editing and playing Alda scores.
 
+                            ________________________________
+                           /    o   oooo ooo oooo   o o o  /\
+                          /    oo  ooo  oo  oooo   o o o  / /
+                         /    _________________________  / /
+                        / // / // /// // /// // /// / / / /
+                       /___ //////////////////////////_/ /
+                       \____\________________________\_\/
+
+                                    - alda -
+
 INTRODUCTION			               		*ft-alda* *alda*
 
 Alda is a music programming language designed for musicians who don't
