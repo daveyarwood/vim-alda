@@ -22,6 +22,19 @@ For more information on Alda itself:
 
 This plugin provides a nice environment for Vim users to work on Alda scores.
 
+================================================================================
+CONTENTS					*ft-alda-contents* *alda-contents*
+
+  1. Options .................................. |alda-options|
+  2. Indentation .............................. |alda-indent|
+  3. Syntax Highlighting ...................... |alda-syntax|
+  4. Navigation ............................... |alda-sections|
+  5. Folding .................................. |alda-folding|
+  6. Parsing a Score .......................... |alda-parse|
+  7. Playing a Score .......................... |alda-play|
+  8. About .................................... |alda-about|
+
+================================================================================
 OPTIONS						*ft-alda-options* *alda-options*
 
 g:alda_command					*g:alda_command* *alda_command*
@@ -29,14 +42,17 @@ g:alda_command					*g:alda_command* *alda_command*
 	The path to the `alda` executable.
 	default value: alda
 
+================================================================================
 INDENTATION					*ft-alda-indent* *alda-indent*
 
 (not yet implemented)
 
+================================================================================
 SYNTAX HIGHLIGHTING				*ft-alda-syntax* *alda-syntax*
 
 Syntax highlighting is provided.
 
+================================================================================
 NAVIGATION					*ft-alda-sections* *alda-sections*
 					    *ft-alda-navigation* *alda-navigation*
 
@@ -59,6 +75,7 @@ the colon, e.g.:
 	clarinet:
 	  e f g a b
 
+================================================================================
 FOLDING						*ft-alda-folding* *alda-folding*
 
 Alda instrument parts, voices, etc. are foldable using the standard Vim
@@ -77,6 +94,7 @@ parts and voices, e.g.:
 	violin:
 	  c4. e8~4 g4
 
+================================================================================
 PARSING A SCORE					*ft-alda-parse* *alda-parse*
 
 There are commands available to parse the current Alda score file and show the
@@ -97,6 +115,7 @@ when the alda.lisp code is evaluated. This is mapped to <localleader>m.
 This command relies on `alda` being installed and included in your $PATH. If 
 |g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda), it will use that executable instead.
 
+================================================================================
 PLAYING A SCORE					*ft-alda-play* *alda-play*
 
 `:AldaPlayFile` will play the current score file. This is mapped to
@@ -108,6 +127,7 @@ playback.
 This command relies on `alda` being installed and included in your $PATH. If
 |g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda), it will use that executable instead.
 
+================================================================================
 ABOUT						*ft-alda-about* *alda-about*
 
 Please feel free to file any issues or contribute patches via GitHub:
