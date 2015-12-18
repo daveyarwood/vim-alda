@@ -19,12 +19,12 @@ function! alda#parsing#OpenClosableClojureSplitBuffer(cmd)
 endfunction
 
 function! alda#parsing#AldaParseFileIntoLispCode()
-  let cmd = g:alda_command . " parse --lisp --file " . bufname("%")
+  let cmd = g:alda_command . " parse --lisp --file " . shellescape(bufname("%"))
   call alda#parsing#OpenClosableClojureSplitBuffer(cmd)
 endfunction
 
 function! alda#parsing#AldaParseFileIntoScoreMap()
-  let cmd = g:alda_command . " parse --map --file " . bufname("%")
+  let cmd = g:alda_command . " parse --map --file " . shellescape(bufname("%"))
   call alda#parsing#OpenClosableClojureSplitBuffer(cmd)
 endfunction
 
