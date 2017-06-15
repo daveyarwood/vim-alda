@@ -106,14 +106,15 @@ score to be parsed.
 The parse results will be displayed in a vertical split with Clojure syntax
 highlighting. `q` is mapped in this buffer as a convenient way to close it.
 
-`:AldaParseFileIntoLispCode` displays the Clojure (alda.lisp) code that is
-generated when the score is parsed. This is mapped to <localleader>l.
-
-`:AldaParseFileIntoScoreMap` displays the map of score data that is produced
-when the alda.lisp code is evaluated. This is mapped to <localleader>m.
+`:AldaParseFile` displays the JSON representation of the score that is
+generated when the score is parsed. This is mapped to <localleader>s.
 
 This command relies on `alda` being installed and included in your $PATH. If 
-|g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda), it will use that executable instead.
+|g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda),
+it will use that executable instead.
+
+Bonus: if `jq` is installed and included in your $PATH, the score JSON will be
+pretty-printed. (jq: https://stedolan.github.io/jq)
 
 ================================================================================
 PLAYING A SCORE					*ft-alda-play* *alda-play*
@@ -125,7 +126,8 @@ Note: You must save your score if you want your changes to be included in the
 playback.
 
 This command relies on `alda` being installed and included in your $PATH. If
-|g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda), it will use that executable instead.
+|g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda),
+it will use that executable instead.
 
 ================================================================================
 ABOUT						*ft-alda-about* *alda-about*
@@ -136,6 +138,6 @@ Please feel free to file any issues or contribute patches via GitHub:
 
 This plugin is distributed under the Vim license. See |license|.
 
-Copyright © 2015 Dave Yarwood <dave.yarwood@gmail.com>
+Copyright © 2017 Dave Yarwood <dave.yarwood@gmail.com>
 
 vim:tw=78:noet:sw=8:sts=8:ts=8:ft=help:norl:

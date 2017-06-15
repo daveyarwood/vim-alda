@@ -4,17 +4,9 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-command! AldaParseFileIntoLispCode
-  \ call alda#parsing#AldaParseFileIntoLispCode()
+command! AldaParseFile
+  \ call alda#parsing#AldaParseFile()
 
-nnoremap <buffer> <localleader>l
-  \ :call alda#parsing#AldaParseFileIntoLispCode()<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-command! AldaParseFileIntoScoreMap
-  \ call alda#parsing#AldaParseFileIntoScoreMap()
-
-nnoremap <buffer> <localleader>m
-  \ :call alda#parsing#AldaParseFileIntoScoreMap()<CR>
+nnoremap <buffer> <localleader>s
+  \ :call alda#parsing#AldaParseFile()<CR>
 
