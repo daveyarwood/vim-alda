@@ -30,9 +30,10 @@ CONTENTS					*ft-alda-contents* *alda-contents*
   3. Syntax Highlighting ...................... |alda-syntax|
   4. Navigation ............................... |alda-sections|
   5. Folding .................................. |alda-folding|
-  6. Parsing a Score .......................... |alda-parse|
-  7. Playing a Score .......................... |alda-play|
-  8. About .................................... |alda-about|
+  6. Parsing .................................. |alda-parse|
+  7. Playing .................................. |alda-play|
+  8. History .................................. |alda-history|
+  9. About .................................... |alda-about|
 
 ================================================================================
 OPTIONS						*ft-alda-options* *alda-options*
@@ -95,7 +96,7 @@ parts and voices, e.g.:
 	  c4. e8~4 g4
 
 ================================================================================
-PARSING A SCORE					*ft-alda-parse* *alda-parse*
+PARSING        					*ft-alda-parse* *alda-parse*
 
 There are commands available to parse the current Alda score file and show the
 parsed representation of the score.
@@ -109,25 +110,89 @@ highlighting. `q` is mapped in this buffer as a convenient way to close it.
 `:AldaParseFile` displays the JSON representation of the score that is
 generated when the score is parsed. This is mapped to <localleader>s.
 
-This command relies on `alda` being installed and included in your $PATH. If 
+This command relies on `alda` being installed and included in your `$PATH`. If 
 |g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda),
 it will use that executable instead.
 
-Bonus: if `jq` is installed and included in your $PATH, the score JSON will be
+Bonus: if `jq` is installed and included in your `$PATH`, the score JSON will be
 pretty-printed. (jq: https://stedolan.github.io/jq)
 
 ================================================================================
-PLAYING A SCORE					*ft-alda-play* *alda-play*
+PLAYING        					*ft-alda-play* *alda-play*
 
-`:AldaPlayFile` will play the current score file. This is mapped to
-<localleader>P.
-
-Note: You must save your score if you want your changes to be included in the
-playback.
-
-This command relies on `alda` being installed and included in your $PATH. If
-|g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda),
+Playing Alda code relies on `alda` being installed and included in your $PATH.
+If |g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda), 
 it will use that executable instead.
+
+Playing a selection~
+
+There is a play operator that is mapped to <localleader>p in normal and visual
+mode.
+
+This operator is useful for playing small selections or blocks of Alda code.
+
+In visual mode, simply highlight the code you want to play, then enter
+<localleader>p.
+
+In normal mode, you can use <localleader>p just like any other Vim operator.
+For example...
+
+<localleader>p$         play from the cursor to the end of the line
+<localleader>paw	play the word around the cursor
+<localleader>pa)	play the parenthesized expression around the cursor
+<localleader>pp		play the current line
+
+As each selection is played, if it was successful (i.e. valid syntax), the
+selection is added to the history.
+
+For more information about history, see |alda-history|.
+
+Playing the entire buffer~
+
+`:AldaPlayFile` will play the contents of the current buffer.
+
+This is mapped to <localleader>P.
+
+Running this command clears the history. (See |alda-history|.)
+
+Stopping playback~
+
+`:AldaStopPlayback` will stop all sound from the Alda server.
+
+This is mapped to <localleader>S.
+
+================================================================================
+HISTORY						*ft-alda-history* *alda-history*
+
+For each .alda file you open in vim, vim-alda stores the selections of code
+that you play in a "history file." This makes it possible to keep track of the
+current instrument(s), tempo, etc. when playing consecutive selections.
+
+For example, if you play the following selection:
+>
+	bassoon: (tempo 100) o2
+<
+You will hear nothing (because there are no notes), but that text is added to
+the history.
+
+Then, if you play the following selection:
+>
+	c8 d e- f g2
+<
+You will hear the notes being played on bassoon, at 100 bpm, in the second
+octave.
+
+There are some commands and mappings available for interacting with the
+history file of the current buffer:
+
+`:AldaHistory`		<localleader>hh
+Shows the contents of the history file.
+
+`:AldaEditHistory`	<localleader>he
+Opens the history file in a buffer for editing.
+
+`:AldaClearHistory`	<localleader>hc
+Clears the contents of the history file.
 
 ================================================================================
 ABOUT						*ft-alda-about* *alda-about*

@@ -5,8 +5,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 command! AldaParseFile
-  \ call alda#parsing#AldaParseFile()
+  \ call alda#parsing#ParseFile()
 
 nnoremap <buffer> <localleader>s
-  \ :call alda#parsing#AldaParseFile()<CR>
+  \ :call alda#parsing#ParseFile()<CR>
 

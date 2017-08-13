@@ -33,3 +33,33 @@ function! alda#GetFold(lnum)
 
   return '0'
 endfunction
+
+function s:NoOp(job_id, data, event)
+  " do nothing
+endfunction
+
+" Runs `cmd` in the shell as an asynchronous job.
+"
+" Calls `Callback` upon receiving STDOUT, STDERR, or the process exiting.
+" (See :help job-control-usage).
+"
+" A string of `alda_code` can be provided in order to pass it through to the
+" callback function (as `self.alda_code`).
+function! alda#RunAsync(cmd, ...)
+  let Callback = (a:0 >= 1) ? a:1 : function('s:NoOp')
+  let alda_code = (a:0 >= 2) ? a:2 : ""
+
+  call jobstart(a:cmd, {
+        \ 'on_stdout': Callback,
+        \ 'on_stderr': Callback,
+        \ 'on_exit': Callback,
+        \ 'alda_code': alda_code,
+        \ 'output': []
+        \ })
+endfunction
+
+function! alda#ShellInput(input)
+  let input = substitute(a:input, '\n', '\\n', 'g')
+  return "echo -e " . shellescape(input) . " | "
+endfunction
+

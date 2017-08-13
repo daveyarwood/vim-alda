@@ -1,11 +1,59 @@
-function! alda#playing#AldaPlayFile()
-  let cmd = g:alda_command . " play --file " . shellescape(bufname("%"))
-  echom "Playing score..."
-  let result = system(cmd)
-  if v:shell_error == 1
-    echom result
-  else
-    echom "Done."
+function s:PlayCallback(job_id, data, event) dict
+  if a:event == 'stdout'
+    let output = ''.join(a:data)
+    echom output
+  elseif a:event == 'stderr'
+    let output = ''.join(a:data)
+    echoe output
+  elseif a:event == 'exit'
+    " If playback was successful, append the code to b:alda_history.
+    if a:data ==# 0 " exit code
+      let lines = split(self.alda_code, '\n')
+      call writefile(lines, fnameescape(b:alda_history_file), "a")
+    endif
   endif
 endfunction
 
+function s:StopCallback(job_id, data, event) dict
+  if a:event == 'stdout'
+    let output = ''.join(a:data)
+    echom output
+  elseif a:event == 'stderr'
+    let output = ''.join(a:data)
+    echoe output
+  elseif a:event == 'exit'
+    " assume it succeeded
+  endif
+endfunction
+
+function alda#playing#ClearHistory()
+  call writefile([""], fnameescape(b:alda_history_file))
+endfunction
+
+function! alda#playing#Play(input)
+  let cmd = alda#ShellInput(a:input) .
+            \ g:alda_command . " play -I " . fnameescape(b:alda_history_file)
+  call alda#RunAsync(cmd, function('s:PlayCallback'), a:input)
+endfunction
+
+function! alda#playing#PlayOperator(type)
+  let previous = @n
+
+  " yank target/selected text into "n
+  if a:type ==# 'char' || a:type ==# 'line'
+    silent! normal `[v`]"ny
+  else "visual
+    silent! normal gv"ny
+  endif
+
+  let input = @n
+
+  " restore whatever was in "n before
+  let @n = previous
+
+  call alda#playing#Play(input)
+endfunction
+
+function! alda#playing#StopPlayback()
+  call alda#RunAsync(g:alda_command . " stop", function('s:StopCallback'))
+endfunction

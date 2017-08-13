@@ -1,36 +1,45 @@
 # vim-alda
 
-A plugin for Vim providing support for editing and playing [Alda](http://github.com/alda-lang/alda) scores.
-
-> Under construction as I learn more about making Vim plugins. Bear with me! If you're interested in helping with this, Pull Requests are happily accepted.
+A plugin for Vim providing support for editing and playing [Alda][alda] scores.
 
 ## Features
 
 * Syntax highlighting and filetype detection.
-* Commands/mappings for parsing the current score and showing the results.
-* Command/mapping for playing the current score.
 * Score navigation via `[[`, `]]`, `[]`, `][`.
 * Folds for instrument parts, voices, etc.
 * Support for [vim-commentary](http://github.com/tpope/vim-commentary).
-
-### TODO
-
-* An operator for playing snippets of Alda code.
-* Smart indentation.
-* Autocompletion of stock instruments, alda.lisp vars.
+* Useful commands/mappings for playing selections of Alda code.
+* Commands/mappings for parsing the current score and showing the results.
+* Per-buffer history feature makes playing selections feel like using the Alda
+  REPL.
 
 ## Installation
 
-Install using your Vim plugin manager of choice. [Vundle](https://github.com/VundleVim/Vundle.vim) and [Pathogen](http://github.com/tpope/vim-pathogen) are nice choices.
+Install using your Vim plugin manager of choice. [Vundle][vundle], [vim-plug][vim-plug], and [dein.vim][dein] are all fine choices.
+
+Of course, if you haven't already, you should install [Alda][alda].
+
+### Optional
+
+For pretty-printed JSON when viewing a parsed score, install [jq][jq] and make
+it available on your `$PATH`.
 
 ## Usage
 
-> For comprehensive documentation, see `:help alda`.
+For comprehensive documentation, see `:help alda`.
 
-TODO
+## Contributing
+
+Pull Requests welcome!
 
 ## License
 
-Copyright © 2015 Dave Yarwood
+Copyright © 2015-2017 Dave Yarwood
 
 Distributed under the same terms as Vim itself. See `:help license`.
+
+[alda]: https://github.com/alda-lang/alda
+[dein]: https://github.com/Shougo/dein.vim
+[jq]: https://stedolan.github.io/jq/
+[vundle]: https://github.com/VundleVim/Vundle.vim
+[vim-plug]: https://github.com/junegunn/vim-plug
