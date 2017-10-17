@@ -1,7 +1,3 @@
-if !exists("g:alda_command")
-  let g:alda_command = "alda"
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " history file
 

@@ -1,3 +1,7 @@
+if !exists("g:alda_command")
+  let g:alda_command = "alda"
+endif
+
 function! alda#NextNonBlankLine(lnum)
   let numlines = line('$')
   let current  = a:lnum + 1
