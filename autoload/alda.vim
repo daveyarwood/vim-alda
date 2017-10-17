@@ -2,6 +2,14 @@ if !exists("g:alda_command")
   let g:alda_command = "alda"
 endif
 
+if !exists("g:alda_port")
+  let g:alda_port = 27713
+endif
+
+function! alda#ServerCommand(the_rest)
+  return g:alda_command . " -p " . g:alda_port . " " . a:the_rest
+endfunction
+
 function! alda#NextNonBlankLine(lnum)
   let numlines = line('$')
   let current  = a:lnum + 1

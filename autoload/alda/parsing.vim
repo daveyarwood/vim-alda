@@ -46,7 +46,7 @@ endfunction
 
 function! alda#parsing#ParseFile()
   let code = join(getline(1,'$'), "\n")
-  let cmd = alda#ShellInput(code) . g:alda_command . " parse"
+  let cmd = alda#ShellInput(code) . alda#ServerCommand("parse")
   echom "Parsing score..."
   call alda#RunAsync(cmd, function('s:ParseCallback'))
 endfunction
