@@ -1,10 +1,12 @@
 function s:PlayCallback(job_id, data, event) dict
   if a:event == 'stdout'
-    let output = ''.join(a:data)
+    let output = join(a:data, '')
     echom output
   elseif a:event == 'stderr'
-    let output = ''.join(a:data)
-    echoe output
+    let output = join(a:data, '')
+    if strlen(output) > 0
+      echoe output
+    endif
   elseif a:event == 'exit'
     " If playback was successful, append the code to b:alda_history.
     if a:data ==# 0 " exit code
@@ -16,11 +18,13 @@ endfunction
 
 function s:StopCallback(job_id, data, event) dict
   if a:event == 'stdout'
-    let output = ''.join(a:data)
+    let output = join(a:data, '')
     echom output
   elseif a:event == 'stderr'
-    let output = ''.join(a:data)
-    echoe output
+    let output = join(a:data, '')
+    if strlen(output) > 0
+      echoe output
+    endif
   elseif a:event == 'exit'
     " assume it succeeded
   endif
