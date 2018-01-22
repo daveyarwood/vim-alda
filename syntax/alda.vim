@@ -12,8 +12,11 @@ syntax region aldaClojureExpr
 syntax match aldaIdentifier "\v[a-zA-Z]{2,}[\w[:digit:]\-+'()]*"
 highlight link aldaIdentifier Function
 
+syntax match aldaVoice "\vV[[:digit:]]+:"
+highlight link aldaVoice Type
+
 syntax match aldaOctaveChange "\vo\-?\d+|\<|\>"
-highlight link aldaOctaveChange Identifier
+highlight link aldaOctaveChange PreProc
 
 syntax match aldaComment "\v#.*$"
 syntax match aldaComment "\v\|"
