@@ -15,6 +15,12 @@ highlight link aldaIdentifier Function
 syntax match aldaVoice "\vV[[:digit:]]+:"
 highlight link aldaVoice Type
 
+syntax match aldaMarker "\v\%[a-zA-Z]{2,}[\w[:digit:]\-+'()]*"
+highlight link aldaMarker Special
+
+syntax match aldaAtMarker "\v\@[a-zA-Z]{2,}[\w[:digit:]\-+'()]*"
+highlight link aldaAtMarker Special
+
 syntax match aldaOctaveChange "\vo\-?\d+|\<|\>"
 highlight link aldaOctaveChange PreProc
 
