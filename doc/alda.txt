@@ -106,9 +106,6 @@ PARSING        					*ft-alda-parse* *alda-parse*
 There are commands available to parse the current Alda score file and show the
 parsed representation of the score.
 
-Note: You must save your score if you want your changes to be included in the
-score to be parsed.
-
 The parse results will be displayed in a vertical split with Clojure syntax
 highlighting. `q` is mapped in this buffer as a convenient way to close it.
 
