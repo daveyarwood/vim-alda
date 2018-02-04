@@ -44,7 +44,7 @@ function s:ParseCallback(job_id, data, event) dict
   endif
 endfunction
 
-function! alda#parsing#ParseFile()
+function! alda#parsing#ParseBuffer()
   let code = join(getline(1,'$'), "\n")
   let cmd = alda#ShellInput(code) . alda#ServerCommand("parse")
   echom "Parsing score..."

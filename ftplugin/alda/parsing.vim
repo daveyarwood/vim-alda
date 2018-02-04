@@ -1,6 +1,6 @@
-command! AldaParseFile
-  \ call alda#parsing#ParseFile()
+command! AldaParseBuffer
+  \ call alda#parsing#ParseBuffer()
 
 nnoremap <buffer> <localleader>s
-  \ :call alda#parsing#ParseFile()<CR>
+  \ :call alda#parsing#ParseBuffer()<CR>
 

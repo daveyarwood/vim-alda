@@ -109,7 +109,7 @@ parsed representation of the score.
 The parse results will be displayed in a vertical split with Clojure syntax
 highlighting. `q` is mapped in this buffer as a convenient way to close it.
 
-`:AldaParseFile` displays the JSON representation of the score that is
+`:AldaParseBuffer` displays the JSON representation of the score that is
 generated when the score is parsed. This is mapped to <localleader>s.
 
 This command relies on `alda` being installed and included in your `$PATH`. If 
@@ -151,7 +151,7 @@ For more information about history, see |alda-history|.
 
 Playing the entire buffer~
 
-`:AldaPlayFile` will play the contents of the current buffer.
+`:AldaPlayBuffer` will play the contents of the current buffer.
 
 This is mapped to <localleader>P.
 
