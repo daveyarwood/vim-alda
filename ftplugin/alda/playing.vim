@@ -29,6 +29,13 @@ nmap <buffer> <localleader>pp V<localleader>p
 vnoremap <buffer> <localleader>p :<c-u>call alda#playing#PlayOperator(visualmode())<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" parse events operator
+
+nnoremap <buffer> <localleader>e :set operatorfunc=alda#parsing#ParseEventsOperator<cr>g@
+nmap <buffer> <localleader>ee V<localleader>e
+vnoremap <buffer> <localleader>e :<c-u>call alda#parsing#ParseEventsOperator(visualmode())<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " play contents of buffer
 
 function! alda#playing#PlayBuffer()

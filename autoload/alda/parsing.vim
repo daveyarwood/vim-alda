@@ -51,3 +51,20 @@ function! alda#parsing#ParseBuffer()
   call alda#RunAsync(cmd, function('s:ParseCallback'))
 endfunction
 
+function! alda#parsing#ParseBufferEvents()
+  let code = join(getline(1,'$'), "\n")
+  let cmd = alda#ShellInput(code) . alda#ServerCommand("parse -o events")
+  echom "Parsing score events..."
+  call alda#RunAsync(cmd, function('s:ParseCallback'))
+endfunction
+
+function! alda#parsing#ParseEvents(input)
+  let cmd = alda#ShellInput(a:input) . alda#ServerCommand("parse -o events")
+  echom "Parsing events..."
+  call alda#RunAsync(cmd, function('s:ParseCallback'))
+endfunction
+
+function! alda#parsing#ParseEventsOperator(type)
+  call alda#Operator(a:type, function('alda#parsing#ParseEvents'))
+endfunction
+

@@ -41,21 +41,7 @@ function! alda#playing#Play(input)
 endfunction
 
 function! alda#playing#PlayOperator(type)
-  let previous = @n
-
-  " yank target/selected text into "n
-  if a:type ==# 'char' || a:type ==# 'line'
-    silent! normal `[v`]"ny
-  else "visual
-    silent! normal gv"ny
-  endif
-
-  let input = @n
-
-  " restore whatever was in "n before
-  let @n = previous
-
-  call alda#playing#Play(input)
+  call alda#Operator(a:type, function('alda#playing#Play'))
 endfunction
 
 function! alda#playing#StopPlayback()

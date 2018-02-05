@@ -75,3 +75,22 @@ function! alda#ShellInput(input)
   return "echo -e " . shellescape(input) . " | "
 endfunction
 
+" Convenience function for creating vim operators.
+function! alda#Operator(type, callback)
+  let previous = @n
+
+  " yank target/selected text into "n
+  if a:type ==# 'char' || a:type ==# 'line'
+    silent! normal `[v`]"ny
+  else "visual
+    silent! normal gv"ny
+  endif
+
+  let input = @n
+
+  " restore whatever was in "n before
+  let @n = previous
+
+  call a:callback(input)
+endfunction
+

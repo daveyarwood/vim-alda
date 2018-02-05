@@ -103,28 +103,56 @@ parts and voices, e.g.:
 ================================================================================
 PARSING        					*ft-alda-parse* *alda-parse*
 
-There are commands available to parse the current Alda score file and show the
-parsed representation of the score.
+There are commands available to parse Alda code and show the parsed
+representation of the score.
 
 The parse results will be displayed in a vertical split with Clojure syntax
 highlighting. `q` is mapped in this buffer as a convenient way to close it.
 
+Note: This command relies on `alda` being installed and included in your
+`$PATH`. If |g:alda_command| is set to an explicit path (e.g.
+`/Users/dave/Downloads/alda`), it will use that executable instead.
+
+Parse results are emitted in JSON format. As a bonus, if you have `jq`
+installed and available on your `$PATH`, the JSON will be pretty-printed.
+(jq: https://stedolan.github.io/jq)
+
+Parsing the entire buffer as score data~
+
 `:AldaParseBuffer` displays the JSON representation of the score that is
-generated when the score is parsed. This is mapped to <localleader>s.
+generated when the contents of the buffer are parsed. This is mapped to
+<localleader>s.
 
-This command relies on `alda` being installed and included in your `$PATH`. If 
-|g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda),
-it will use that executable instead.
+Parsing the entire buffer as events~
 
-Bonus: if `jq` is installed and included in your `$PATH`, the score JSON will be
-pretty-printed. (jq: https://stedolan.github.io/jq)
+`:AldaParseBufferEvents` parses the contents of the buffer and emits a JSON
+array of objects representing score events. This is mapped to <localleader>E.
+
+Parsing a selection as events~
+
+There is a "parse events" operator that is mapped to <localleader>e in normal
+and visual mode.
+
+This operator can be used to parse small selections or blocks of Alda code and
+see how the parser interprets the code excerpts as score events.
+
+In visual mode, simply highlight the code you want to parse, then enter
+<localleader>e.
+
+In normal mode, you can use <localleader>e just like any other Vim operator.
+For example...
+
+<localleader>e$         parse from the cursor to the end of the line
+<localleader>eaw	parse the word around the cursor
+<localleader>ea)	parse the parenthesized expression around the cursor
+<localleader>ee		parse the current line
 
 ================================================================================
 PLAYING        					*ft-alda-play* *alda-play*
 
-Playing Alda code relies on `alda` being installed and included in your $PATH.
-If |g:alda_command| is set to an explicit path (e.g. /Users/dave/Downloads/alda), 
-it will use that executable instead.
+Playing Alda code relies on `alda` being installed and included in your
+`$PATH`.  If |g:alda_command| is set to an explicit path (e.g.
+`/Users/dave/Downloads/alda`), it will use that executable instead.
 
 Playing a selection~
 
