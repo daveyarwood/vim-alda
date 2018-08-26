@@ -19,6 +19,8 @@ Install using your Vim plugin manager of choice. [Vundle][vundle], [vim-plug][vi
 
 Of course, if you haven't already, you should install [Alda][alda].
 
+Alda version 1.0.0-rc83 or higher is required.
+
 ### Optional
 
 For pretty-printed JSON when viewing a parsed score, install [jq][jq] and make

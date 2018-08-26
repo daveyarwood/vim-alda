@@ -7,7 +7,7 @@ if !exists("g:alda_port")
 endif
 
 function! alda#ServerCommand(the_rest)
-  return g:alda_command . " -p " . g:alda_port . " " . a:the_rest
+  return g:alda_command . " --no-color -p " . g:alda_port . " " . a:the_rest
 endfunction
 
 function! alda#NextNonBlankLine(lnum)
