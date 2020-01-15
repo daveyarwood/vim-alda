@@ -41,7 +41,7 @@ vnoremap <buffer> <localleader>e :<c-u>call alda#parsing#ParseEventsOperator(vis
 function! alda#playing#PlayBuffer()
   call alda#playing#ClearHistory()
   let pos = winsaveview()
-  execute "normal! ggvG$:\<c-u>call alda#playing#PlayOperator(visualmode())\<cr>"
+  execute "normal! gg0vG$:\<c-u>call alda#playing#PlayOperator(visualmode())\<cr>"
   call winrestview(pos)
 endfunction
 
