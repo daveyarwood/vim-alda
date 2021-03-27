@@ -2,6 +2,10 @@
 
 A plugin for Vim providing support for editing and playing [Alda][alda] scores.
 
+> **This plugin currently will only work on Neovim.**
+>
+> It ought to be easy to make it work with Vim, too. I am looking into this.
+
 ## Features
 
 * Syntax highlighting and filetype detection.
