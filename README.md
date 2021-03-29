@@ -45,7 +45,7 @@ Pull Requests welcome!
 
 ## License
 
-Copyright © 2015-2017 Dave Yarwood
+Copyright © 2015-2021 Dave Yarwood
 
 Distributed under the same terms as Vim itself. See `:help license`.
 
