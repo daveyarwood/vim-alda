@@ -2,9 +2,14 @@
 
 A plugin for Vim providing support for editing and playing [Alda][alda] scores.
 
-> **This plugin currently will only work on Neovim.**
+> **This plugin currently only works on Neovim.**
 >
-> It ought to be easy to make it work with Vim, too. I am looking into this.
+> It would be nice if it worked on Vim, too, but I haven't been able to figure
+> out how get that working without needing to rewrite a bunch of Neovim-specific
+> code to conditionally use either Neovim's or Vim's background jobs APIs.
+>
+> If you use Vim and you're interested in contributing support for Vim, I would
+> greatly appreciate it!
 
 ## Features
 
