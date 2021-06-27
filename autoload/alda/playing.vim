@@ -3,10 +3,6 @@ function s:PlayCallback(job_id, data, event) dict
     echo a:data
   elseif a:event == 'stderr' && strlen(join(a:data, '')) > 0
     echoe a:data
-  elseif a:event == 'exit' && a:data ==# 0 " exit code
-    " If playback was successful, append the code to b:alda_history.
-    let lines = split(self.alda_code, '\n')
-    call writefile(lines, fnameescape(b:alda_history_file), "a")
   endif
 endfunction
 
@@ -20,13 +16,8 @@ function s:StopCallback(job_id, data, event) dict
   endif
 endfunction
 
-function alda#playing#ClearHistory()
-  call writefile([""], fnameescape(b:alda_history_file))
-endfunction
-
 function! alda#playing#Play(input)
-  let cmd = alda#ShellInput(a:input) .
-        \ alda#Command("play -I " . fnameescape(b:alda_history_file))
+  let cmd = alda#ShellInput(a:input) . alda#Command("play")
   call alda#RunAsync(cmd, function('s:PlayCallback'), a:input)
 endfunction
 

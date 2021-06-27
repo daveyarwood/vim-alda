@@ -32,8 +32,7 @@ CONTENTS					*ft-alda-contents* *alda-contents*
   5. Folding .................................. |alda-folding|
   6. Parsing .................................. |alda-parse|
   7. Playing .................................. |alda-play|
-  8. History .................................. |alda-history|
-  9. About .................................... |alda-about|
+  8. About .................................... |alda-about|
 
 ================================================================================
 OPTIONS						*ft-alda-options* *alda-options*
@@ -167,57 +166,17 @@ For example...
 <localleader>pa)	play the parenthesized expression around the cursor
 <localleader>pp		play the current line
 
-As each selection is played, if it was successful (i.e. valid syntax), the
-selection is added to the history.
-
-For more information about history, see |alda-history|.
-
 Playing the entire buffer~
 
 `:AldaPlayBuffer` will play the contents of the current buffer.
 
 This is mapped to <localleader>P.
 
-Running this command clears the history. (See |alda-history|.)
-
 Stopping playback~
 
 `:AldaStopPlayback` will stop all sound from the Alda server.
 
 This is mapped to <localleader>S.
-
-================================================================================
-HISTORY						*ft-alda-history* *alda-history*
-
-For each .alda file you open in vim, vim-alda stores the selections of code
-that you play in a "history file." This makes it possible to keep track of the
-current instrument(s), tempo, etc. when playing consecutive selections.
-
-For example, if you play the following selection:
->
-	bassoon: (tempo 100) o2
-<
-You will hear nothing (because there are no notes), but that text is added to
-the history.
-
-Then, if you play the following selection:
->
-	c8 d e- f g2
-<
-You will hear the notes being played on bassoon, at 100 bpm, in the second
-octave.
-
-There are some commands and mappings available for interacting with the
-history file of the current buffer:
-
-`:AldaHistory`		<localleader>hh
-Shows the contents of the history file.
-
-`:AldaEditHistory`	<localleader>he
-Opens the history file in a buffer for editing.
-
-`:AldaClearHistory`	<localleader>hc
-Clears the contents of the history file.
 
 ================================================================================
 ABOUT						*ft-alda-about* *alda-about*

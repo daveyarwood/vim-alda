@@ -1,27 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" history file
-
-" A buffer-local file containing Alda code evaluated/played thus far. Each time
-" code is successfully evaluated, it is appended to the file. When playing
-" subsequent snippets of code, this history is provided for context, so that
-" Alda knows e.g.  what instruments are active when playing small pieces of
-" code.
-if !exists("b:alda_history_file")
-  let b:alda_history_file = tempname()
-  " write to the file so it exists and is empty
-  call alda#playing#ClearHistory()
-endif
-
-command! AldaHistoryFile echo b:alda_history_file
-command! AldaHistory echon join(readfile(fnameescape(b:alda_history_file)), "\n")
-command! AldaEditHistory exec "e " . fnameescape(b:alda_history_file)
-command! AldaClearHistory call alda#playing#ClearHistory()
-
-nnoremap <buffer> <localleader>hh :AldaHistory<CR>
-nnoremap <buffer> <localleader>he :AldaEditHistory<CR>
-nnoremap <buffer> <localleader>hc :AldaClearHistory<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " play operator
 
 nnoremap <buffer> <localleader>p :set operatorfunc=alda#playing#PlayOperator<cr>g@
@@ -39,7 +16,6 @@ vnoremap <buffer> <localleader>e :<c-u>call alda#parsing#ParseEventsOperator(vis
 " play contents of buffer
 
 function! alda#playing#PlayBuffer()
-  call alda#playing#ClearHistory()
   let pos = winsaveview()
   execute "normal! gg0vG$:\<c-u>call alda#playing#PlayOperator(visualmode())\<cr>"
   call winrestview(pos)
