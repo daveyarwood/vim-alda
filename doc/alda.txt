@@ -43,11 +43,6 @@ g:alda_command					*g:alda_command* *alda_command*
 	The path to the `alda` executable.
 	default value: alda
 
-g:alda_port					*g:alda_port* *alda_port*
-
-	The port to use to talk to the Alda server.
-	default value: 27713
-
 ================================================================================
 INDENTATION					*ft-alda-indent* *alda-indent*
 

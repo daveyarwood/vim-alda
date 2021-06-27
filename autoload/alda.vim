@@ -2,12 +2,8 @@ if !exists("g:alda_command")
   let g:alda_command = "alda"
 endif
 
-if !exists("g:alda_port")
-  let g:alda_port = 27713
-endif
-
-function! alda#ServerCommand(the_rest)
-  return g:alda_command . " --no-color -p " . g:alda_port . " " . a:the_rest
+function! alda#Command(the_rest)
+  return g:alda_command . " " . a:the_rest
 endfunction
 
 function! alda#NextNonBlankLine(lnum)

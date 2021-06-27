@@ -46,20 +46,20 @@ endfunction
 
 function! alda#parsing#ParseBuffer()
   let code = join(getline(1,'$'), "\n")
-  let cmd = alda#ShellInput(code) . alda#ServerCommand("parse")
+  let cmd = alda#ShellInput(code) . alda#Command("parse")
   echom "Parsing score..."
   call alda#RunAsync(cmd, function('s:ParseCallback'))
 endfunction
 
 function! alda#parsing#ParseBufferEvents()
   let code = join(getline(1,'$'), "\n")
-  let cmd = alda#ShellInput(code) . alda#ServerCommand("parse -o events")
+  let cmd = alda#ShellInput(code) . alda#Command("parse -o events")
   echom "Parsing score events..."
   call alda#RunAsync(cmd, function('s:ParseCallback'))
 endfunction
 
 function! alda#parsing#ParseEvents(input)
-  let cmd = alda#ShellInput(a:input) . alda#ServerCommand("parse -o events")
+  let cmd = alda#ShellInput(a:input) . alda#Command("parse -o events")
   echom "Parsing events..."
   call alda#RunAsync(cmd, function('s:ParseCallback'))
 endfunction

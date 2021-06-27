@@ -36,7 +36,7 @@ endfunction
 
 function! alda#playing#Play(input)
   let cmd = alda#ShellInput(a:input) .
-        \ alda#ServerCommand("play -I " . fnameescape(b:alda_history_file))
+        \ alda#Command("play -I " . fnameescape(b:alda_history_file))
   call alda#RunAsync(cmd, function('s:PlayCallback'), a:input)
 endfunction
 
@@ -45,5 +45,5 @@ function! alda#playing#PlayOperator(type)
 endfunction
 
 function! alda#playing#StopPlayback()
-  call alda#RunAsync(alda#ServerCommand("stop"), function('s:StopCallback'))
+  call alda#RunAsync(alda#Command("stop"), function('s:StopCallback'))
 endfunction
