@@ -1,18 +1,28 @@
 function s:PlayCallback(job_id, data, event) dict
-  if a:event == 'stdout' && strlen(join(a:data, '')) > 0
-    echo a:data
-  elseif a:event == 'stderr' && strlen(join(a:data, '')) > 0
-    echoe a:data
+  if a:event == 'stdout'
+    let output = join(a:data, '')
+    if strlen(output) > 0
+      echom output
+    endif
+  elseif a:event == 'stderr'
+    let output = join(a:data, '')
+    if strlen(output) > 0
+      echom output
+    endif
   endif
 endfunction
 
 function s:StopCallback(job_id, data, event) dict
-  if a:event == 'stdout' && strlen(join(a:data, '')) > 0
-    echo a:data
-  elseif a:event == 'stderr' && strlen(join(a:data, '')) > 0
-    echoe a:data
-  elseif a:event == 'exit'
-    " assume it succeeded
+  if a:event == 'stdout'
+    let output = join(a:data, '')
+    if strlen(output) > 0
+      echom output
+    endif
+  elseif a:event == 'stderr'
+    let output = join(a:data, '')
+    if strlen(output) > 0
+      echom output
+    endif
   endif
 endfunction
 
