@@ -1,14 +1,15 @@
 function s:PrintResults(lines, ...)
   let is_json = (a:0 >= 1) ? a:1 : 0
 
-  echom "Displaying parse results..."
   let tempfile = tempname()
   call writefile(a:lines, fnameescape(tempfile))
+  " Clear 'Pretty-printing parse results...' from the echo area
+  echom ""
 
   exec 'vsplit ' . fnameescape(tempfile)
   setlocal buftype=nofile
   " enable 'q' = close buffer
-  nnoremap <buffer> q :bd<CR>
+  nnoremap <silent> <buffer> q :bd<CR>
 
   if is_json
     setlocal filetype=json
