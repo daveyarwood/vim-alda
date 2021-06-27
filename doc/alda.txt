@@ -233,6 +233,6 @@ Please feel free to file any issues or contribute patches via GitHub:
 
 This plugin is distributed under the Vim license. See |license|.
 
-Copyright © 2017 Dave Yarwood <dave.yarwood@gmail.com>
+Copyright © 2017-2021 Dave Yarwood <dave.yarwood@gmail.com>
 
 vim:tw=78:noet:sw=8:sts=8:ts=8:ft=help:norl:
