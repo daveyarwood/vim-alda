@@ -22,18 +22,17 @@ function! alda#playing#PlayBuffer()
 endfunction
 
 command! AldaPlayBuffer
-  \ call alda#playing#PlayBuffer()
+      \ call alda#playing#PlayBuffer()
 
 nnoremap <silent> <buffer> <localleader>P
-  \ :call alda#playing#PlayBuffer()<CR>
+      \ :call alda#playing#PlayBuffer()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " stop playback
 
 command! AldaStopPlayback
-  \ call alda#playing#StopPlayback()
+      \ call alda#playing#StopPlayback()
 
 nnoremap <silent> <buffer> <localleader>S
-      \ :echom "Stopping playback." <bar>
       \ :call alda#playing#StopPlayback()<CR>
 
