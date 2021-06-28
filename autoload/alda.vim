@@ -57,7 +57,7 @@ function alda#StandardCallback(job_id, data, event) dict
   endif
 endfunction
 
-" Runs `cmd` in the shell as an asynchronous job.
+" Runs `cmd` in the shell as an asynchronous job. Returns the job ID.
 "
 " Calls `Callback` upon receiving STDOUT, STDERR, or the process exiting.
 " (See :help job-control-usage). When no `Callback` argument is supplied,
@@ -70,7 +70,7 @@ function! alda#RunAsync(cmd, ...)
   let Callback = (a:0 >= 1) ? a:1 : function('alda#StandardCallback')
   let alda_code = (a:0 >= 2) ? a:2 : ""
 
-  call jobstart(a:cmd, {
+  return jobstart(a:cmd, {
         \ 'env': {'NO_COLOR': 'true'},
         \ 'on_stdout': Callback,
         \ 'on_stderr': Callback,
