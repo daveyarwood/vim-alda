@@ -45,12 +45,12 @@ endfunction
 " A standard callback that prints lines of stdout/stderr using echo.
 function alda#StandardCallback(job_id, data, event) dict
   if a:event == 'stdout'
-    let output = join(a:data, "\n")
+    let output = trim(join(a:data, "\n"))
     if strlen(output) > 0
       echo output
     endif
   elseif a:event == 'stderr'
-    let output = join(a:data, "\n")
+    let output = trim(join(a:data, "\n"))
     if strlen(output) > 0
       echo output
     endif
