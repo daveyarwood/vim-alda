@@ -1,34 +1,6 @@
-function s:PlayCallback(job_id, data, event) dict
-  if a:event == 'stdout'
-    let output = join(a:data, '')
-    if strlen(output) > 0
-      echom output
-    endif
-  elseif a:event == 'stderr'
-    let output = join(a:data, '')
-    if strlen(output) > 0
-      echom output
-    endif
-  endif
-endfunction
-
-function s:StopCallback(job_id, data, event) dict
-  if a:event == 'stdout'
-    let output = join(a:data, '')
-    if strlen(output) > 0
-      echom output
-    endif
-  elseif a:event == 'stderr'
-    let output = join(a:data, '')
-    if strlen(output) > 0
-      echom output
-    endif
-  endif
-endfunction
-
 function! alda#playing#Play(input)
   let cmd = alda#ShellInput(a:input) . alda#Command("play")
-  call alda#RunAsync(cmd, function('s:PlayCallback'), a:input)
+  call alda#RunAsync(cmd, function('alda#StandardCallback'), a:input)
 endfunction
 
 function! alda#playing#PlayOperator(type)
@@ -36,5 +8,5 @@ function! alda#playing#PlayOperator(type)
 endfunction
 
 function! alda#playing#StopPlayback()
-  call alda#RunAsync(alda#Command("stop"), function('s:StopCallback'))
+  call alda#RunAsync(alda#Command("stop"))
 endfunction

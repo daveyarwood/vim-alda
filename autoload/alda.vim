@@ -42,19 +42,32 @@ function! alda#GetFold(lnum)
   return '0'
 endfunction
 
-function s:NoOp(job_id, data, event)
-  " do nothing
+" A standard callback that prints lines of stdout/stderr using echo.
+function alda#StandardCallback(job_id, data, event) dict
+  if a:event == 'stdout'
+    let output = join(a:data, "\n")
+    if strlen(output) > 0
+      echo output
+    endif
+  elseif a:event == 'stderr'
+    let output = join(a:data, "\n")
+    if strlen(output) > 0
+      echo output
+    endif
+  endif
 endfunction
 
 " Runs `cmd` in the shell as an asynchronous job.
 "
 " Calls `Callback` upon receiving STDOUT, STDERR, or the process exiting.
-" (See :help job-control-usage).
+" (See :help job-control-usage). When no `Callback` argument is supplied,
+" defaults to a standard callback where we print lines of stdout and stderr
+" using echo.
 "
 " A string of `alda_code` can be provided in order to pass it through to the
 " callback function (as `self.alda_code`).
 function! alda#RunAsync(cmd, ...)
-  let Callback = (a:0 >= 1) ? a:1 : function('s:NoOp')
+  let Callback = (a:0 >= 1) ? a:1 : function('alda#StandardCallback')
   let alda_code = (a:0 >= 2) ? a:2 : ""
 
   call jobstart(a:cmd, {

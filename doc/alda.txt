@@ -32,7 +32,8 @@ CONTENTS					*ft-alda-contents* *alda-contents*
   5. Folding .................................. |alda-folding|
   6. Parsing .................................. |alda-parse|
   7. Playing .................................. |alda-play|
-  8. About .................................... |alda-about|
+  8. Alda CLI wrapper.......................... |alda-cli-wrapper|
+  9. About .................................... |alda-about|
 
 ================================================================================
 OPTIONS						*ft-alda-options* *alda-options*
@@ -177,6 +178,37 @@ Stopping playback~
 `:AldaStopPlayback` will stop all sound from the Alda server.
 
 This is mapped to <localleader>S.
+
+================================================================================
+ALDA CLI WRAPPER    			*ft-alda-cli-wrapper* *alda-cli-wrapper*
+
+vim-alda provides an `:Alda` command that can be used to issue arbitrary
+`alda` CLI commands. It's just like running an `alda` command in your
+terminal.
+
+Your `alda` command runs in a subprocess and lines of stdout and stderr are
+printed as they are produced.
+
+For convenience, the <localleader>a mapping enters `:Alda` into the Vim
+command line followed by a space. You can then complete the `alda` CLI command
+and press <cr> to run it. (TIP: You can press <tab> to auto-complete the names
+of Alda commands!)
+
+Playing an Alda score~
+>
+ :Alda play -f /tmp/my-score.alda
+
+Printing your Alda CLI version~
+>
+ :Alda version
+
+Listing background player processes~
+>
+ :Alda ps
+
+Running health checks, in verbose mode~
+>
+ :Alda -v2 doctor
 
 ================================================================================
 ABOUT						*ft-alda-about* *alda-about*

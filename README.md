@@ -24,6 +24,7 @@ A plugin for Vim providing support for editing and playing [Alda][alda] scores.
 * Score navigation via `[[`, `]]`, `[]`, `][`.
 * Folds for instrument parts, voices, etc.
 * Support for [vim-commentary](http://github.com/tpope/vim-commentary).
+* `:Alda` wrapper for running `alda` CLI commands
 * Useful commands/mappings for playing selections of Alda code.
 * Commands/mappings for parsing the current score and showing the results.
 
