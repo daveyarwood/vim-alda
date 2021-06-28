@@ -71,6 +71,7 @@ function! alda#RunAsync(cmd, ...)
   let alda_code = (a:0 >= 2) ? a:2 : ""
 
   call jobstart(a:cmd, {
+        \ 'env': {'NO_COLOR': 'true'},
         \ 'on_stdout': Callback,
         \ 'on_stderr': Callback,
         \ 'on_exit': Callback,
