@@ -26,6 +26,8 @@ A plugin for Vim providing support for editing and playing [Alda][alda] scores.
 * Support for [vim-commentary](http://github.com/tpope/vim-commentary).
 * `:Alda` wrapper for running `alda` CLI commands
 * Useful commands/mappings for playing selections of Alda code.
+* Integrates with your Alda REPL session to facilitate interactive
+  development and live coding.
 * Commands/mappings for parsing the current score and showing the results.
 
 ## Installation

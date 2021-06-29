@@ -25,15 +25,16 @@ This plugin provides a nice environment for Vim users to work on Alda scores.
 ================================================================================
 CONTENTS					*ft-alda-contents* *alda-contents*
 
-  1. Options .................................. |alda-options|
-  2. Indentation .............................. |alda-indent|
-  3. Syntax Highlighting ...................... |alda-syntax|
-  4. Navigation ............................... |alda-sections|
-  5. Folding .................................. |alda-folding|
-  6. Parsing .................................. |alda-parse|
-  7. Playing .................................. |alda-play|
-  8. Alda CLI wrapper.......................... |alda-cli-wrapper|
-  9. About .................................... |alda-about|
+  1.  Options .................................. |alda-options|
+  2.  Indentation .............................. |alda-indent|
+  3.  Syntax Highlighting ...................... |alda-syntax|
+  4.  Navigation ............................... |alda-sections|
+  5.  Folding .................................. |alda-folding|
+  6.  Parsing .................................. |alda-parse|
+  7.  Playing .................................. |alda-play|
+  8.  Alda CLI wrapper.......................... |alda-cli-wrapper|
+  9.  Connecting to an Alda REPL server......... |alda-repl-connect|
+  10. About .................................... |alda-about|
 
 ================================================================================
 OPTIONS						*ft-alda-options* *alda-options*
@@ -209,6 +210,97 @@ Listing background player processes~
 Running health checks, in verbose mode~
 >
  :Alda -v2 doctor
+
+================================================================================
+CONNECTING TO AN ALDA REPL SERVER               	*ft-alda-repl-connect*
+                                                          *alda-repl-connect*
+
+By default, vim-alda is _not_ connected to an Alda REPL server. You can still
+use all of the commands listed above, including playing snippets of code using
+the play operator. However, each time you use the play operator, the code
+snippet is evaluated in a _separate context_.
+
+For a better understanding of what this means, try copying the following code
+into a `.alda` file and play each line by itself by moving your cursor onto
+that line and pressing <localleader>pp:
+>
+ # first, play this line:
+ guitar: e8 f+ g 
+
+ # then, play this line:
+ a b2
+
+When you play the first line, you'll hear 3 notes played on a guitar, as
+expected.
+
+When you play the second line, you might expect to hear 2 more notes played on
+a guitar, however, you'll actually hear nothing. This is because the second
+expression is equivalent to running `alda play --code "a b2"` at the command
+line. Without the _context_ about the guitar being the "active" instrument,
+those two notes `a` and `b2` are not played on any particular instrument.
+
+Being able to preserve this context between evaluations is very useful for
+experimentation and live coding. To achieve this, you must run an Alda REPL
+server and then connect to it from vim-alda.
+
+Starting an Alda REPL server~
+
+In a separate terminal, run:
+>
+ alda repl --server
+
+You should see some output that tells you which port the server is running on:
+>
+ nREPL server started on port 40105 on host localhost - nrepl://localhost:40105
+
+Connecting to your Alda REPL server~
+
+Back in Vim, run the following command to connect to the Alda REPL server:
+>
+ :AldaConnect 40105
+
+For convenience, you can type <localleader>C, a convenience mapping for
+`:AldaConnect`` folowed by a space. Then, you can type in the port number and
+press enter.
+
+If you started your Alda REPL server in the same directory where you started
+Vim, you can leave out the port argument and vim-alda will figure it out by
+reading a hidden file (`.alda-nrepl-port`) created by the Alda REPL server.
+>
+ :AldaConnect
+
+This is mapped to <localleader>c.
+
+As you evaluate snippets of Alda code, the Alda REPL server keeps track of
+which instrument(s) are active and all of their properties (octave, volume,
+panning, etc.) so that the context is not lost.
+
+Resetting the Alda REPL server state~
+
+If you ever want to erase this context and start over from a clean slate, you
+can reset the state of the Alda REPL server by running this command:
+>
+ :AldaNewScore
+
+This is mapped to <localleader>n.
+
+Viewing the code entered so far~
+
+At any time, you can see the Alda code that has been evaluated so far in your
+current score by running:
+>
+ :AldaScoreText
+
+This is mapped to <localleader>t.
+
+Disconnecting from the Alda REPL server~
+
+To tell vim-alda to forget about your Alda REPL server and go back to
+evaluating every code snippet in a separate context, run:
+>
+ :AldaDisconnect
+
+This is mapped to <localleader>d.
 
 ================================================================================
 ABOUT						*ft-alda-about* *alda-about*
