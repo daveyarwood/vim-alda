@@ -3,7 +3,7 @@ function! alda#playing#Play(input) abort
     return alda#repl#Play(a:input)
   else
     let cmd = alda#ShellInput(a:input) . alda#Command("play")
-    call alda#RunAsync(cmd, function('alda#StandardCallback'), a:input)
+    call alda#RunAsync(cmd, function('alda#StandardCallback'))
   endif
 endfunction
 

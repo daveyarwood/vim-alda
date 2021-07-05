@@ -63,19 +63,14 @@ endfunction
 " (See :help job-control-usage). When no `Callback` argument is supplied,
 " defaults to a standard callback where we print lines of stdout and stderr
 " using echo.
-"
-" A string of `alda_code` can be provided in order to pass it through to the
-" callback function (as `self.alda_code`).
 function! alda#RunAsync(cmd, ...)
   let Callback = (a:0 >= 1) ? a:1 : function('alda#StandardCallback')
-  let alda_code = (a:0 >= 2) ? a:2 : ""
 
   return jobstart(a:cmd, {
         \ 'env': {'NO_COLOR': 'true'},
         \ 'on_stdout': Callback,
         \ 'on_stderr': Callback,
         \ 'on_exit': Callback,
-        \ 'alda_code': alda_code,
         \ 'output': []
         \ })
 endfunction
