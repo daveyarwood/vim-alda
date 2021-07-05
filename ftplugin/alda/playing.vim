@@ -17,7 +17,7 @@ vnoremap <silent> <buffer> <localleader>e :<c-u>call alda#parsing#ParseEventsOpe
 
 function! alda#playing#PlayBuffer()
   let pos = winsaveview()
-  execute "silent! normal! gg0vG$:\<c-u>call alda#playing#PlayOperator(visualmode())\<cr>"
+  execute "silent! normal! gg0vG$:\<c-u>call alda#playing#PlayDisconnectedOperator(visualmode())\<cr>"
   call winrestview(pos)
 endfunction
 
